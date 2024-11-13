@@ -16,7 +16,7 @@ export default function Epi() {
 
                 <main className="content">
                     <div className="buttons">
-                        <Link to={'/cadastrar'} className="button">
+                        <Link to={'/cadastroEpi'} className="button">
                             <MdOutlineAppRegistration className="icon" />
                             <span>Cadastrar</span>
                         </Link>

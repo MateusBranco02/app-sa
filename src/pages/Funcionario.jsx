@@ -13,7 +13,7 @@ export default function Funcionario() {
 
             <main className="content">
                 <div className="buttons">
-                    <Link to={'/cadastrar'} className="button">
+                    <Link to={'/cadastroFuncionario'} className="button">
                         <MdOutlineAppRegistration className="icon" />
                         <span>Cadastrar</span>
                     </Link>
