@@ -5,14 +5,13 @@ import { IoIosConstruct } from "react-icons/io";
 import { FaHistory } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import '../styles/Epi.css';
+import Header from '../components/Header.jsx';
 
 export default function Epi() {
     return (
         <>
             <div className="app">
-                <header className="header">
-                    <h1>Gerenciamento de EPI's</h1>
-                </header>
+                <Header titulo={"Gerenciamento de EPI's"} />
 
                 <main className="content">
                     <div className="buttons">
