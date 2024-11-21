@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Cadastro-epi.css';
+import Header from '../components/Header.jsx';
 
 export default function CadastroEpi() {
     const [nome, setNome] = useState('');
@@ -13,9 +14,7 @@ export default function CadastroEpi() {
 
     return (
         <div className="app">
-            <header className="header">
-                <h1>Cadastro de EPI's</h1>
-            </header>
+            <Header titulo={"Bonde da S.A."} />
 
             <main className="content">
                 <div className="form-container">

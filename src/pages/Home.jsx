@@ -8,10 +8,11 @@ import Botao from '../components/Botao.jsx';
 export default function Home() {
   return (
     <>
-      <Header titulo={"Gerenciamento de EPI's"} />
+      <Header titulo={"Bonde da S.A."} />
       <div className='container'>
         <div className='container-view'>
           <Botao caminho={'/epi'} icone={FaHelmetSafety} titulo={'EPI'} />
+          <Botao caminho={'/funcionario'} icone={FaUser} titulo={'Funcionario'}/>
         </div>
 
       </div>

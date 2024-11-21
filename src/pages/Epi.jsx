@@ -11,17 +11,13 @@ export default function Epi() {
     return (
         <>
             <div className="app">
-                <Header titulo={"Gerenciamento de EPI's"} />
+                <Header titulo={"Bonde da S.A."} />
 
                 <main className="content">
                     <div className="buttons">
                         <Link to={'/cadastroEpi'} className="button">
                             <MdOutlineAppRegistration className="icon" />
                             <span>Cadastrar</span>
-                        </Link>
-                        <Link to={'/editar-remover'} className="button">
-                            <TbEditOff className="icon" />
-                            <span>Editar/Remover</span>
                         </Link>
                         <Link to={'/epi-cadastro'} className="button">
                             <IoIosConstruct className="icon" />

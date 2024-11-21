@@ -2,14 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineAppRegistration } from "react-icons/md";
 import { TbEditOff } from "react-icons/tb";
+import Header from '../components/Header.jsx';
 
 
 export default function Funcionario() {
     return (
         <div className="app">
-            <header className="header">
-                <h1 className="title">Gerenciamento de Funcionarios</h1>
-            </header>
+            <Header titulo={"Bonde da S.A."} />
 
             <main className="content">
                 <div className="buttons">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../components/Header.jsx';
 
 export default function CadastroFuncionario() {
     const [nome, setNome] = useState('');
@@ -14,9 +15,7 @@ export default function CadastroFuncionario() {
 
     return (
         <div className="app">
-            <header className="header">
-                <h1>Cadastro de Funcionário</h1>
-            </header>
+            <Header titulo={"Bonde da S.A."} />
 
             <main className="content">
                 <div className="form-container">
