@@ -1,32 +1,22 @@
-import React from 'react';
 import '../styles/Home.css';
-import { FaHelmetSafety } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { FaHelmetSafety } from 'react-icons/fa6';
+import { FaUser } from 'react-icons/fa';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
+import Botao from '../components/Botao.jsx';
 
 export default function Home() {
   return (
-    <div className="app">
-      <header className="header">
-        <h1>Gerenciamento de EPI's</h1>
-      </header>
-
-      <main className="content">
-        <div className="buttons">
-          <Link to={'/epi'} className="button">
-            <FaHelmetSafety className="icon" />
-            <span>EPI</span>
-          </Link>
-          <Link to={'/funcionario'} className="button">
-            <FaUser className="icon" />
-            <span>Funcionário</span>
-          </Link>
+    <>
+      <Header titulo={"Bonde da S.A."} />
+      <div className='container'>
+        <div className='container-view'>
+          <Botao caminho={'/epi'} icone={FaHelmetSafety} titulo={'EPI'} />
+          <Botao caminho={'/funcionario'} icone={FaUser} titulo={'Funcionario'}/>
         </div>
-      </main>
 
-      <footer className="footer">
-        © Todos os direitos reservados
-      </footer>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }
