@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import '../styles/Cadastro-epi.css';
 import Header from '../components/Header.jsx';
+import axios from 'axios';
+
 
 export default function CadastroEpi() {
-    const [nome, setNome] = useState('');
-    const [imagem, setImagem] = useState('');
-    const [quantidade, setQuantidade] = useState('');
+    const [novoEpi, setNovoEpi] = useState({
+        nome: '',
+        imagem: '',
+        quantidade: ''
+    });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('EPI Cadastrado:', { nome, tipo, quantidade });
+    const cadastrarEpi = async () => {
+        const URL = 'http://localhost:3000/cadastrar-epi';
+        const response = await axios.post(URL, novoEpi);
+        console.log('EPI Cadastrado:', response)
     };
 
     return (
@@ -19,13 +24,13 @@ export default function CadastroEpi() {
             <main className="content">
                 <div className="form-container">
                     <h2>Cadastro de EPI</h2>
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form" onSubmit={cadastrarEpi}>
                         <div className="form-group">
                             <input
                                 type="text"
                                 placeholder="Nome do EPI"
-                                value={nome}
-                                onChange={(e) => setNome(e.target.value)}
+                                onChange={(nome) => setNovoEpi({ ...novoEpi, nome: nome.target.value })}
+                                value={novoEpi.nome}
                                 required
                             />
                         </div>
@@ -34,8 +39,8 @@ export default function CadastroEpi() {
                             <input
                                 type="text"
                                 placeholder="Url da Imagem"
-                                value={imagem}
-                                onChange={(e) => setImagem(e.target.value)}
+                                onChange={(imagem) => setNovoEpi({ ...novoEpi, imagem: imagem.target.value })}
+                                value={novoEpi.imagem}
                                 required
                             />
                         </div>
@@ -44,13 +49,15 @@ export default function CadastroEpi() {
                             <input
                                 type="number"
                                 placeholder="Quantidade*"
-                                value={quantidade}
-                                onChange={(e) => setQuantidade(e.target.value)}
+                                onChange={(quantidade) => setNovoEpi({ ...novoEpi, quantidade: Number(quantidade.target.value) })}
+                                value={novoEpi.quantidade}
                                 required
                             />
                         </div>
 
                         <button type="submit" className="submit-button">CADASTRAR</button>
+
+
                     </form>
                 </div>
             </main>
