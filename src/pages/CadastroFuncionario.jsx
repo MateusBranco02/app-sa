@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import Header from '../components/Header.jsx';
+import axios from 'axios';
 
 export default function CadastroFuncionario() {
-    const [nome, setNome] = useState('');
-    const [funcao, setFuncao] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [email, setEmail] = useState('');
-    const [CPF, setCPF] = useState('');
+    const [novoFuncionario, setNovoFuncionario] = useState({
+        nome: '',
+        funcao: '',
+        telefona: '',
+        email: '',
+        cpf: '',
+    })
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Funcionário Cadastrado:', { nome, funcao, telefone, email, CPF });
+    const cadastrarFuncionario = async () => {
+        
+        const url = 'http://localhost:3000/cadastrar-funcionario';
+        const response = await axios.post(url, novoFuncionario)
+        console.log('Funcionário Cadastrado:', response.data);
     };
 
     return (
@@ -20,13 +25,13 @@ export default function CadastroFuncionario() {
             <main className="content">
                 <div className="form-container">
                     <h2>Cadastro de Funcionário</h2>
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form" onSubmit={cadastrarFuncionario}>
                         <div className="form-group">
                             <input
                                 type="text"
                                 placeholder="Nome Funcionário"
-                                value={nome}
-                                onChange={(e) => setNome(e.target.value)}
+                                onChange={(nome) => setNovoFuncionario({...novoFuncionario, nome: nome.target.value})}
+                                value={novoFuncionario.nome}
                                 required
                             />
                         </div>
@@ -35,8 +40,8 @@ export default function CadastroFuncionario() {
                             <input
                                 type="text"
                                 placeholder="Função"
-                                value={funcao}
-                                onChange={(e) => setFuncao(e.target.value)}
+                                value={novoFuncionario.funcao}
+                                onChange={(funcao) => setNovoFuncionario({...novoFuncionario, funcao: funcao.target.value})}
                                 required
                             />
                         </div>
@@ -45,8 +50,8 @@ export default function CadastroFuncionario() {
                             <input
                                 type="text"
                                 placeholder="Telefone"
-                                value={telefone}
-                                onChange={(e) => setTelefone(e.target.value)}
+                                value={novoFuncionario.telefone}
+                                onChange={(telefone) => setNovoFuncionario({...novoFuncionario, telefone: telefone.target.value})}
                                 required
                             />
                         </div>
@@ -55,8 +60,8 @@ export default function CadastroFuncionario() {
                             <input
                                 type="email"
                                 placeholder="Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={novoFuncionario.email}
+                                onChange={(email) => setNovoFuncionario({...novoFuncionario, email: email.target.value})}
                                 required
                             />
                         </div>
@@ -65,8 +70,8 @@ export default function CadastroFuncionario() {
                             <input
                                 type="text"
                                 placeholder="CPF"
-                                value={CPF}
-                                onChange={(e) => setCPF(e.target.value)}
+                                value={novoFuncionario.CPF}
+                                onChange={(cpf) => setNovoFuncionario({...novoFuncionario, cpf: cpf.target.value})}
                                 required
                             />
                         </div>
