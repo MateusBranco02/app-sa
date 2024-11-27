@@ -25,7 +25,6 @@ export default function EditFuncionario() {
         <div className="container-historico">
           <h2>Editar/Remover</h2>
           <div className="historico-area">
-            <p>Esta área será usada para exibir os funcionarios.</p>
             <ul className='lista-epis'>
               {funcionarios.map((funcionario, key) =>
                 <li className='epi-item' key={key}>

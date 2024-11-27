@@ -3,6 +3,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 
 export default function EditEpi() {
   const [epis, setEpis] = useState([]);
@@ -37,6 +38,8 @@ export default function EditEpi() {
                   <div className='container-info'>
                     <p>Item: {epi.nome}</p>
                     <p>Quantidade: {epi.quantidade}</p>
+                    <Link to={`/retirar-epi/${epi.id}`}>Retirar</Link>
+                    <Link to={`/devolver-epi/${epi.id}`}>Devolver</Link>
                   </div>
                 </li>
               )}
