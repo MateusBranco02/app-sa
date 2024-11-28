@@ -26,7 +26,7 @@ export default function CadastroEpi() {
                     <h2>Cadastro de EPI</h2>
                     <form className="form" onSubmit={cadastrarEpi}>
                         <div className="form-group">
-                            <input
+                            <input className='input-nome'
                                 type="text"
                                 placeholder="Nome do EPI"
                                 onChange={(nome) => setNovoEpi({ ...novoEpi, nome: nome.target.value })}
@@ -36,7 +36,7 @@ export default function CadastroEpi() {
                         </div>
 
                         <div className="form-group">
-                            <input
+                            <input className='input-imagem'
                                 type="text"
                                 placeholder="Url da Imagem"
                                 onChange={(imagem) => setNovoEpi({ ...novoEpi, imagem: imagem.target.value })}
@@ -46,7 +46,7 @@ export default function CadastroEpi() {
                         </div>
 
                         <div className="form-group">
-                            <input
+                            <input className='input-quantidade'
                                 type="number"
                                 placeholder="Quantidade*"
                                 onChange={(quantidade) => setNovoEpi({ ...novoEpi, quantidade: Number(quantidade.target.value) })}
