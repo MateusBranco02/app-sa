@@ -1,11 +1,11 @@
-import React from 'react';
 import { MdOutlineAppRegistration } from "react-icons/md";
 import { TbEditOff } from "react-icons/tb";
 import { IoIosConstruct } from "react-icons/io";
 import { FaHistory } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import '../styles/Epi.css';
 import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
+import '../styles/Epi.css';
 
 export default function Epi() {
     return (
@@ -30,9 +30,7 @@ export default function Epi() {
                     </div>
                 </main>
 
-                <footer className="footer">
-                    © Todos os direitos reservados
-                </footer>
+                <Footer />
             </div>
         </>
     )
