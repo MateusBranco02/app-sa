@@ -1,6 +1,9 @@
-import { useState } from 'react';
-import Header from '../components/Header.jsx';
 import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import '../styles/CadastroFuncionario.css';
 
 export default function CadastroFuncionario() {
     const [novoFuncionario, setNovoFuncionario] = useState({
@@ -11,82 +14,70 @@ export default function CadastroFuncionario() {
         cpf: '',
     });
 
-    const cadastrarFuncionario = async () => {
+    const navigate = useNavigate();
+
+    const cadastrarFuncionario = async (event) => {
+        event.preventDefault();
         const url = 'http://localhost:3000/cadastrar-funcionario';
         const response = await axios.post(url, novoFuncionario);
-    };
+        navigate('/');
+    }
 
     return (
-        <div className="app">
-            <Header titulo={"Bonde da S.A."} />
+        <>
+            <Header titulo={'CADASTRAR FUNCIONÁRIO'} />
 
-            <main className="content">
-                <div className="form-container">
-                    <h2>Cadastro de Funcionário</h2>
-                    <form className="form" onSubmit={cadastrarFuncionario}>
-                        <div className="form-group">
-                            <input
-                                className='input-nome'
-                                type="text"
-                                placeholder="Nome Funcionário"
-                                onChange={(nome) => setNovoFuncionario({ ...novoFuncionario, nome: nome.target.value })}
-                                value={novoFuncionario.nome}
-                                required
-                            />
-                        </div>
+            <div className='container'>
+                <div className='container-form-funcionario'>
+                    <h2>Preencha os campos abaixo</h2>
+                    <form className='form' onSubmit={cadastrarFuncionario}>
+                        <input
+                            className='input-nome'
+                            type='text'
+                            placeholder='Nome Funcionário'
+                            onChange={(nome) => setNovoFuncionario({ ...novoFuncionario, nome: nome.target.value })}
+                            value={novoFuncionario.nome}
+                            required
+                        />
+                        <input
+                            className='input-funcao'
+                            type='text'
+                            placeholder='Função'
+                            onChange={(funcao) => setNovoFuncionario({ ...novoFuncionario, funcao: funcao.target.value })}
+                            value={novoFuncionario.funcao}
+                            required
+                        />
+                        <input
+                            className='input-telefone'
+                            type='text'
+                            placeholder='Telefone'
+                            onChange={(telefone) => setNovoFuncionario({ ...novoFuncionario, telefone: telefone.target.value })}
+                            value={novoFuncionario.telefone}
+                            required
+                        />
+                        <input
+                            className='input-email'
+                            type='email'
+                            placeholder='Email'
+                            onChange={(email) => setNovoFuncionario({ ...novoFuncionario, email: email.target.value })}
+                            value={novoFuncionario.email}
+                            required
+                        />
+                        <input
+                            className='input-cpf'
+                            type='text'
+                            placeholder='CPF'
+                            onChange={(cpf) => setNovoFuncionario({ ...novoFuncionario, cpf: cpf.target.value })}
+                            value={novoFuncionario.CPF}
+                            required
+                        />
 
-                        <div className="form-group">
-                            <input
-                                className='input-funcao'
-                                type="text"
-                                placeholder="Função"
-                                value={novoFuncionario.funcao}
-                                onChange={(funcao) => setNovoFuncionario({ ...novoFuncionario, funcao: funcao.target.value })}
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <input
-                                className='input-telefone'
-                                type="text"
-                                placeholder="Telefone"
-                                value={novoFuncionario.telefone}
-                                onChange={(telefone) => setNovoFuncionario({ ...novoFuncionario, telefone: telefone.target.value })}
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <input
-                                className='input-email'
-                                type="email"
-                                placeholder="Email"
-                                value={novoFuncionario.email}
-                                onChange={(email) => setNovoFuncionario({ ...novoFuncionario, email: email.target.value })}
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <input
-                                className='input-cpf'
-                                type="text"
-                                placeholder="CPF"
-                                value={novoFuncionario.CPF}
-                                onChange={(cpf) => setNovoFuncionario({ ...novoFuncionario, cpf: cpf.target.value })}
-                                required
-                            />
-                        </div>
-
-                        <button type="submit" className="submit-button">CADASTRAR</button>
+                        <button className='btnCadastrar' type='submit'>CADASTRAR</button>
                     </form>
                 </div>
-            </main>
+            </div>
 
-            <footer className="footer">
-                © Todos os direitos reservados
-            </footer>
-        </div>
+            <Footer />
+        </>
     );
 }

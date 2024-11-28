@@ -1,30 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { MdOutlineAppRegistration } from "react-icons/md";
-import { TbEditOff } from "react-icons/tb";
+import { MdOutlineAppRegistration } from 'react-icons/md';
+import { TbEditOff } from 'react-icons/tb';
+import Botao from '../components/Botao.jsx';
 import Header from '../components/Header.jsx';
-
+import Footer from '../components/Footer.jsx';
+import '../styles/Funcionario.css';
 
 export default function Funcionario() {
     return (
-        <div className="app">
-            <Header titulo={"Bonde da S.A."} />
+        <>
+            <Header titulo={'ESCOLHA UMA DAS OPÇÕES'} />
 
-            <main className="content">
-                <div className="buttons">
-                    <Link to={'/cadastroFuncionario'} className="button">
-                        <MdOutlineAppRegistration className="icon" />
-                        <span>Cadastrar</span>
-                    </Link>
-                    <Link to={'/editar-remover'} className="button">
-                        <TbEditOff className="icon" />
-                        <span>Editar/Remover</span>
-                    </Link>
+            <div className='container'>
+                <div className='container-view'>
+                    <Botao caminho={'/cadastro-funcionario'} icone={MdOutlineAppRegistration} titulo={'CADASTRAR'} />
+                    <Botao caminho={'/lista-funcionarios'} icone={TbEditOff} titulo={'FUNCIONÁRIOS'} />
                 </div>
-            </main>
-            <footer className="footer">
-                © Todos os direitos reservados
-            </footer>
-        </div>
+            </div>
+
+            <Footer />
+        </>
     );
 }

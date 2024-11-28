@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import '../styles/Cadastro-epi.css';
-import Header from '../components/Header.jsx';
 import axios from 'axios';
-
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import '../styles/CadastroEpi.css';
 
 export default function CadastroEpi() {
     const [novoEpi, setNovoEpi] = useState({
@@ -11,60 +12,51 @@ export default function CadastroEpi() {
         quantidade: ''
     });
 
-    const cadastrarEpi = async () => {
-        const URL = 'http://localhost:3000/cadastrar-epi';
-        const response = await axios.post(URL, novoEpi);
-        console.log('EPI Cadastrado:', response)
-    };
+    const navigate = useNavigate();
+
+    const cadastrarEpi = async (event) => {
+        event.preventDefault();
+        const url = 'http://localhost:3000/cadastrar-epi';
+        const response = await axios.post(url, novoEpi);
+        navigate('/');
+    }
 
     return (
-        <div className="app">
-            <Header titulo={"Bonde da S.A."} />
+        <>
+            <Header titulo={'CADASTRAR EPI'} />
 
-            <main className="content">
-                <div className="form-container">
+            <div className='container'>
+                <div className='container-form'>
                     <h2>Cadastro de EPI</h2>
-                    <form className="form" onSubmit={cadastrarEpi}>
-                        <div className="form-group">
-                            <input className='input-nome'
-                                type="text"
-                                placeholder="Nome do EPI"
-                                onChange={(nome) => setNovoEpi({ ...novoEpi, nome: nome.target.value })}
-                                value={novoEpi.nome}
-                                required
-                            />
-                        </div>
+                    <form className='form' onSubmit={cadastrarEpi}>
+                        <input
+                            type='text'
+                            placeholder='Nome do EPI'
+                            onChange={(nome) => setNovoEpi({ ...novoEpi, nome: nome.target.value })}
+                            value={novoEpi.nome}
+                            required
+                        />
+                        <input
+                            type='text'
+                            placeholder='Url da Imagem'
+                            onChange={(imagem) => setNovoEpi({ ...novoEpi, imagem: imagem.target.value })}
+                            value={novoEpi.imagem}
+                            required
+                        />
+                        <input
+                            type='number'
+                            placeholder='Quantidade'
+                            onChange={(quantidade) => setNovoEpi({ ...novoEpi, quantidade: Number(quantidade.target.value) })}
+                            value={novoEpi.quantidade}
+                            required
+                        />
 
-                        <div className="form-group">
-                            <input className='input-imagem'
-                                type="text"
-                                placeholder="Url da Imagem"
-                                onChange={(imagem) => setNovoEpi({ ...novoEpi, imagem: imagem.target.value })}
-                                value={novoEpi.imagem}
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <input className='input-quantidade'
-                                type="number"
-                                placeholder="Quantidade*"
-                                onChange={(quantidade) => setNovoEpi({ ...novoEpi, quantidade: Number(quantidade.target.value) })}
-                                value={novoEpi.quantidade}
-                                required
-                            />
-                        </div>
-
-                        <button type="submit" className="submit-button">CADASTRAR</button>
-
-
+                        <button className='btnCadastrar' type='submit'>CADASTRAR</button>
                     </form>
                 </div>
-            </main>
+            </div>
 
-            <footer className="footer">
-                © Todos os direitos reservados
-            </footer>
-        </div>
+            <Footer />
+        </>
     );
 }

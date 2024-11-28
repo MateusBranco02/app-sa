@@ -9,7 +9,7 @@ export default function Header({ titulo }) {
     return (
         <>
             <div className='container-cabecalho'>
-                <header className='cabacalho'>
+                <header className='cabecalho'>
                     {location.pathname !== '/' && (
                         <div className='btnVoltar' onClick={() => navigate(-1)}>
                             <FaArrowLeft size={18} />

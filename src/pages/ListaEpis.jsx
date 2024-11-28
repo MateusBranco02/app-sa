@@ -1,11 +1,11 @@
-import '../styles/EditEpi.css';
-import Header from '../components/Header.jsx';
-import Footer from '../components/Footer.jsx';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
+import Header from '../components/Header.jsx';
+import '../styles/ListaEpis.css';
 
-export default function EditEpi() {
+export default function ListaEpis() {
   const [epis, setEpis] = useState([]);
 
   useEffect(() => {
@@ -13,10 +13,9 @@ export default function EditEpi() {
   }, []);
 
   const listarEpis = async () => {
-    const url = 'http://localhost:3000/epis';
+    const url = `http://localhost:3000/epis`;
     try {
       const response = await axios.get(url);
-      console.log(response.data.resultado);
       setEpis(response.data.resultado);
     } catch (error) {
       console.log('Erro ao buscar os EPIS!', error);
@@ -25,12 +24,11 @@ export default function EditEpi() {
 
   return (
     <>
-      <Header titulo={"Bonde da S.A."} />
+      <Header titulo={`Lista de EPI'S`} />
 
-      <div className="container">
-        <div className="container-historico">
-          <h2>Editar/Remover</h2>
-          <div className="historico-area">
+      <div className='container'>
+        <div className='container-view-epis'>
+          <div className='container-epis'>
             <ul className='lista-epis'>
               {epis.map((epi, key) =>
                 <li className='epi-item' key={key}>
@@ -47,6 +45,7 @@ export default function EditEpi() {
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   );
