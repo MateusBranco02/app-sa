@@ -11,6 +11,7 @@ import ListaFuncionarios from './pages/ListaFuncionarios.jsx';
 import ListaEpis from './pages/ListaEpis.jsx';
 import RetirarEpi from './pages/RetirarEpi.jsx';
 import DevolverEpi from './pages/DevolverEpi.jsx';
+import EditarEpi from './pages/EditarEpi.jsx';
 
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
   { path: '/lista-funcionarios', element: <ListaFuncionarios /> },
   { path: '/lista-epi', element: <ListaEpis /> },
   { path: '/retirar-epi/:id', element: <RetirarEpi /> },
-  { path: '/devolver-epi/:id', element: <DevolverEpi /> }
+  { path: '/devolver-epi/:id', element: <DevolverEpi /> },
+  { path: '/editar-epi/:id', element: <EditarEpi /> }
 ]);
 
 createRoot(document.getElementById('root')).render(
