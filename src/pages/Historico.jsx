@@ -1,25 +1,22 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Footer from '../components/Footer.jsx';
+import Header from '../components/Header.jsx';
 import '../styles/Historico.css';
+import { AppContext } from '../context/AppContext.jsx';
+import { useContext } from 'react';
 
 export default function Historico() {
-  const [historico, setHistorico] = useState([]);
+  const { historico } = useContext(AppContext);
 
-  useEffect(() => {
-    exibirHistorico();
-  }, []);
-
-  const exibirHistorico = async () => {
-    const url = 'http://localhost:3000/historico';
-
-    try {
-      const response = await axios.get(url);
-      setHistorico(response.data.resultado);
-    } catch (error) {
-      console.log('Erro ao buscar o histórico!', error);
-    }
+  const formatarData = (data) => {
+    const date = new Date(data);
+    return date.toLocaleDateString('pt-br', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    }).replace(', ', ' - ');
   }
 
   return (
@@ -34,14 +31,19 @@ export default function Historico() {
                 <li className='historico' key={key}>
                   <p>Funcionário: {historico.Funcionario.nome}</p>
                   <p>Epi: {historico.Epi.nome}</p>
+                  <p>Estoque: {historico.Epi.quantidade}</p>
                   <p>
                     {historico.Status.status === 'Retirado'
-                      ? `Qtd. Retirada: ${historico.quantidade} unidade(s)`
-                      : `Qtd. Devolvida: ${historico.quantidade} unidade(s)`
+                      ? `Qtd.Retirada : ${historico.quantidade} unidade${historico.quantidade > 1 ? 's' : ''}`
+                      : `Qtd. Devolvida: ${historico.quantidade} unidade${historico.quantidade > 1 ? 's' : ''}`
                     }
                   </p>
-                  <p>Estoque: {historico.Epi.quantidade}</p>
                   <p>Status: {historico.Status.status}</p>
+                  <p>
+                    {historico.Status.status === 'Devolvido'
+                      ? ` Devolvido em: ${formatarData(historico.updatedAt)}`
+                      : `Retirado em: ${formatarData(historico.createdAt)}`}
+                  </p>
                 </li>
               )}
             </ul>
