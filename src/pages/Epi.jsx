@@ -1,8 +1,8 @@
-import { MdOutlineAppRegistration } from "react-icons/md";
-import { TbEditOff } from "react-icons/tb";
-import { IoIosConstruct } from "react-icons/io";
-import { FaHistory } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { MdOutlineAppRegistration } from 'react-icons/md';
+import { TbEditOff } from 'react-icons/tb';
+import { IoIosConstruct } from 'react-icons/io';
+import { FaHistory } from 'react-icons/fa';
+import Botao from '../components/Botao.jsx';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../styles/Epi.css';
@@ -10,28 +10,18 @@ import '../styles/Epi.css';
 export default function Epi() {
     return (
         <>
-            <div className="app">
-                <Header titulo={"Bonde da S.A."} />
+            <Header titulo={'ESCOLHA UMA DAS OPÇÕES'} />
 
-                <main className="content">
-                    <div className="buttons">
-                        <Link to={'/cadastroEpi'} className="button">
-                            <MdOutlineAppRegistration className="icon" />
-                            <span>Cadastrar</span>
-                        </Link>
-                        <Link to={'/epi-cadastro'} className="button">
-                            <IoIosConstruct className="icon" />
-                            <span>Epi's</span>
-                        </Link>
-                        <Link to={'/historico'} className="button">
-                            <FaHistory className="icon" />
-                            <span>Historico</span>
-                        </Link>
-                    </div>
-                </main>
-
-                <Footer />
+            <div className='container'>
+                <div className='container-view'>
+                    <Botao caminho={'/cadastro-epi'} icone={MdOutlineAppRegistration} titulo={'CADASTRAR'} />
+                    {/* <Botao caminho={'/epi'} icone={TbEditOff} titulo={'EDITAR/REMOVER'} /> */}
+                    <Botao caminho={'/lista-epi'} icone={IoIosConstruct} titulo={'EPIS'} />
+                    <Botao caminho={'/historico'} icone={FaHistory} titulo={'HISTÓRICO'} />
+                </div>
             </div>
+
+            <Footer />
         </>
-    )
+    );
 }
