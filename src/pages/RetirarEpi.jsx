@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import Header from '../components/Header.jsx';
+import '../styles/RetirarEpi.css';
 
 export default function RetirarEpi() {
     const { id } = useParams();
@@ -20,11 +21,12 @@ export default function RetirarEpi() {
 
     return (
         <>
-            <Header titulo={'Retirar-Epi'} />
+            <Header titulo={"RETIRAR EPI"} />
 
             <div className='container'>
-                <div className='container-view'>
-                    <form>
+                <div className='container-form'>
+                    <h2>Retirar EPI</h2>
+                    <form className='form'>
                         <input
                             type='text'
                             placeholder='Nome Funcionário'
@@ -38,7 +40,7 @@ export default function RetirarEpi() {
                             value={epi.quantidade}
                         />
 
-                        <button onClick={retirarEpi}>Retirar</button>
+                        <button className='btnCadastrar' onClick={retirarEpi}>Retirar</button>
                     </form>
                 </div>
             </div>

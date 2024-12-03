@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import Header from '../components/Header.jsx';
+import '../styles/DevolverEpi.css';
+
 
 export default function DevolverEpi() {
     const { id } = useParams();
@@ -27,11 +29,12 @@ export default function DevolverEpi() {
 
     return (
         <>
-            <Header titulo={'Devovler-Epi'} />
+            <Header titulo={'Devovler EPI'} />
 
             <div className='container'>
-                <div className='container-view'>
-                    <form>
+                <div className='container-form'>
+                    <form className='form'>
+                        <h2> Devolver EPI</h2>
                         <input
                             type='text'
                             placeholder='Nome Funcionário'
@@ -45,7 +48,7 @@ export default function DevolverEpi() {
                             value={epi.quantidade}
                         />
 
-                        <button onClick={devolverEpi}>Devolver</button>
+                        <button className='btnCadastrar' onClick={devolverEpi}>Devolver</button>
                     </form>
                 </div>
             </div>
