@@ -6,24 +6,12 @@ import { MdDelete } from "react-icons/md";
 import Footer from '../components/Footer.jsx';
 import Header from '../components/Header.jsx';
 import '../styles/ListaEpis.css';
+import { AppContext } from '../context/AppContext.jsx';
+import { useContext } from 'react';
 
 export default function ListaEpis() {
-  const [epis, setEpis] = useState([]);
 
-  useEffect(() => {
-    listarEpis();
-  }, []);
-
-  const listarEpis = async () => {
-    const url = `http://localhost:3000/epis`;
-    try {
-      const response = await axios.get(url);
-      setEpis(response.data.resultado);
-    } catch (error) {
-      console.log('Erro ao buscar os EPIS!', error);
-    }
-  }
-
+  const { epis } = useContext(AppContext);
   return (
     <>
       <Header titulo={`Lista de EPI'S`} />
@@ -48,7 +36,7 @@ export default function ListaEpis() {
 
                   <div className='container-editar'>
                     <Link to={`/editar-epi/${epi.id}`}> <BiSolidEdit /> </Link>
-                    <Link> <MdDelete /> </Link>
+                    <Link to={`/remover-epi/${epi.id}`}> <MdDelete /> </Link>
                   </div>
                 </li>
               )}

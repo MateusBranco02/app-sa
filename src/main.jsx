@@ -12,6 +12,12 @@ import ListaEpis from './pages/ListaEpis.jsx';
 import RetirarEpi from './pages/RetirarEpi.jsx';
 import DevolverEpi from './pages/DevolverEpi.jsx';
 import EditarEpi from './pages/EditarEpi.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AppProvider from './context/AppContext.jsx';
+import RemoverEpi from './pages/RemoverEpi.jsx';
+
+
 
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
@@ -24,9 +30,16 @@ const router = createBrowserRouter([
   { path: '/lista-epi', element: <ListaEpis /> },
   { path: '/retirar-epi/:id', element: <RetirarEpi /> },
   { path: '/devolver-epi/:id', element: <DevolverEpi /> },
-  { path: '/editar-epi/:id', element: <EditarEpi /> }
+  { path: '/editar-epi/:id', element: <EditarEpi /> },
+  { path: '/remover-epi/:id', element: <RemoverEpi /> },
+
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <>
+    <AppProvider>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </AppProvider>
+  </>
 );

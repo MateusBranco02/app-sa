@@ -1,11 +1,15 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Footer from '../components/Footer.jsx';
+import Header from '../components/Header.jsx';
 import '../styles/CadastroEpi.css';
+import {AppContext} from '../context/AppContext';
+import { toast } from 'react-toastify';
+
 
 export default function CadastroEpi() {
+    const { carregarDados } = useContext(AppContext);
     const [novoEpi, setNovoEpi] = useState({
         nome: '',
         imagem: '',
@@ -18,6 +22,8 @@ export default function CadastroEpi() {
         event.preventDefault();
         const url = 'http://localhost:3000/cadastrar-epi';
         const response = await axios.post(url, novoEpi);
+        carregarDados();
+        toast.success('EPI cadastrado com Sucesso!');
         navigate('/');
     }
 
