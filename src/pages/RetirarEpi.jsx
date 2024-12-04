@@ -1,47 +1,81 @@
 import axios from 'axios';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { AppContext } from '../context/AppContext.jsx';
+import { useContext, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Footer from '../components/Footer.jsx';
 import Header from '../components/Header.jsx';
+import InputMask from 'react-input-mask';
 import '../styles/RetirarEpi.css';
 
 export default function RetirarEpi() {
     const { id } = useParams();
-    const [epi, setEpis] = useState({
-        nome: '',
-        quantidade: '',
+    const { carregarDados } = useContext(AppContext);
+    const [epi, setEpi] = useState({
+        cpf: '',
+        quantidade: ''
     });
+    const [carregando, setCarregando] = useState(false);
+
+    const navigate = useNavigate();
 
     const retirarEpi = async (event) => {
         event.preventDefault();
-        const url = `http://localhost:3000/retirar-epi/${id}`
-        const response = await axios.post(url, epi);
-        setEpis(response.data.resultado);
+
+        const removerMascaraCpf = {
+            ...epi,
+            cpf: epi.cpf.replace(/\D/g, ''),
+        }
+
+        setCarregando(true);
+
+        try {
+            const url = `http://localhost:3000/retirar-epi/${id}`;
+            const response = await axios.post(url, removerMascaraCpf);
+            setEpi(response.data.resultado);
+            carregarDados();
+            toast.success('Epi retirado com sucesso!');
+            navigate('/lista-epi');
+        } catch (error) {
+            const mensagemDeErro = error.response?.data?.mensagem || 'Erro ao retirar o EPI!';
+            toast.error(mensagemDeErro);
+            console.log(mensagemDeErro);
+        } finally {
+            setCarregando(false);
+        }
     }
 
     return (
         <>
-            <Header titulo={"RETIRAR EPI"} />
+            <Header titulo={'Retirar Epi'} />
 
             <div className='container'>
                 <div className='container-form'>
-                    <h2>Retirar EPI</h2>
-                    <form className='form'>
-                        <input
-                            type='text'
-                            placeholder='Nome Funcionário'
-                            onChange={(nome) => setEpis({ ...epi, nome: nome.target.value })}
-                            value={epi.nome}
-                        />
-                        <input
-                            type='Number'
-                            placeholder='Quantidade'
-                            onChange={(quantidade) => setEpis({ ...epi, quantidade: quantidade.target.value })}
-                            value={epi.quantidade}
-                        />
+                    {carregando ? (
+                        <h3>Registrando retirada do EPI...</h3>
+                    ) : (
+                        <>
+                            <h2>Retirar EPI</h2>
+                            <form className='form'>
+                                <InputMask
+                                    mask='999.999.999-99'
+                                    placeholder='Informe seu CPF'
+                                    onChange={(cpf) => setEpi({ ...epi, cpf: cpf.target.value })}
+                                    value={epi.cpf}
+                                    required
+                                />
+                                <input
+                                    type='Number'
+                                    placeholder='Quantidade'
+                                    onChange={(quantidade) => setEpi({ ...epi, quantidade: quantidade.target.value })}
+                                    value={epi.quantidade}
+                                    required
+                                />
 
-                        <button className='btnCadastrar' onClick={retirarEpi}>Retirar</button>
-                    </form>
+                                <button className='btnCadastrar' onClick={retirarEpi}>Retirar</button>
+                            </form>
+                        </>
+                    )}
                 </div>
             </div>
 

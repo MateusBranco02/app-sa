@@ -7,15 +7,13 @@ export default function Loading() {
     return (
         <>
             <Header />
-            <div className='contairner'>
+            <div className='container'>
                 <div className='container-loading'>
-                    <p> Carregando as informações...</p>
+                    <p>Carregando as informações...</p>
                 </div>
+
             </div>
             <Footer />
         </>
-
-
     );
-
 }
