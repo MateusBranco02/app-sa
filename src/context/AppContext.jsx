@@ -30,6 +30,15 @@ export default function AppProvider({ children: components }) {
         }
     }
 
+    const carregarEpis = async () => {
+        try {
+            const resultadoEpis = await axios.get('http://localhost:3000/epis');
+            setEpis(resultadoEpis.data.resultado);
+        } catch (error) {
+            console.log('Erro ao carregar os funcionários!');
+        }
+    }
+
     const carregarFuncionarios = async () => {
         try {
             const resultadoFuncionarios = await axios.get('http://localhost:3000/funcionarios');
@@ -41,7 +50,7 @@ export default function AppProvider({ children: components }) {
 
     return (
         <>
-            <AppContext.Provider value={{ epis, funcionarios, historico, setEpis, setFuncionarios, setHistorico, carregarDados, carregarFuncionarios }}>
+            <AppContext.Provider value={{ epis, funcionarios, historico, setEpis, setFuncionarios, setHistorico, carregarDados, carregarFuncionarios, carregarEpis }}>
                 {components}
             </AppContext.Provider>
         </>

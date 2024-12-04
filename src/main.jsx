@@ -1,6 +1,9 @@
 import './index.css';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AppProvider from './context/AppContext.jsx';
 import Home from './pages/Home.jsx';
 import Epi from './pages/Epi.jsx';
 import Funcionario from './pages/Funcionario.jsx';
@@ -12,12 +15,7 @@ import ListaEpis from './pages/ListaEpis.jsx';
 import RetirarEpi from './pages/RetirarEpi.jsx';
 import DevolverEpi from './pages/DevolverEpi.jsx';
 import EditarEpi from './pages/EditarEpi.jsx';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import AppProvider from './context/AppContext.jsx';
-import RemoverEpi from './pages/RemoverEpi.jsx';
-
-
+import EditarFuncionario from './pages/EditarFuncionario.jsx';
 
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
@@ -31,8 +29,7 @@ const router = createBrowserRouter([
   { path: '/retirar-epi/:id', element: <RetirarEpi /> },
   { path: '/devolver-epi/:id', element: <DevolverEpi /> },
   { path: '/editar-epi/:id', element: <EditarEpi /> },
-  { path: '/remover-epi/:id', element: <RemoverEpi /> },
-
+  { path: '/editar-funcionario/:id', element: <EditarFuncionario /> },
 ]);
 
 createRoot(document.getElementById('root')).render(

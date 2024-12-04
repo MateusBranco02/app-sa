@@ -17,6 +17,7 @@ export default function EditarEpi() {
         quantidade: 0
     });
     const [loading, setLoading] = useState(true);
+    const [carregando, setCarregando] = useState(false);
 
     const navigate = useNavigate();
 
@@ -29,17 +30,19 @@ export default function EditarEpi() {
             const url = `http://localhost:3000/epi/${id}`;
             const response = await axios.get(url);
             setEpi(response.data.resultado);
-            setLoading(false);
         } catch (error) {
             console.log('Erro ao buscar o EPI', error);
             toast.error('Erro ao buscar o EPI!');
+        } finally {
+            setLoading(false);
         }
     }
 
     const editarEpi = async (event) => {
         event.preventDefault();
-        const url = `http://localhost:3000/editar-epi/${id}`;
+        setCarregando(true);
         try {
+            const url = `http://localhost:3000/editar-epi/${id}`;
             const response = await axios.put(url, epi);
             setEpi(response.data.resultado);
             carregarDados();
@@ -48,6 +51,8 @@ export default function EditarEpi() {
         } catch (error) {
             console.log('Erro ao editar o EPI', error);
             toast.error('Erro ao editar o EPI!');
+        } finally {
+            setCarregando(false);
         }
     }
 
@@ -61,32 +66,38 @@ export default function EditarEpi() {
 
             <div className='container'>
                 <div className='container-form-editar'>
-                    <div className='container-titulo'>
-                        <h2>Altere os campos necessários</h2>
-                    </div>
+                    {carregando ? (
+                        <h3>Alterando as informações...</h3>
+                    ) : (
+                        <>
+                            <div className='container-titulo'>
+                                <h2>Altere os campos necessários</h2>
+                            </div>
 
-                    <div className='container-form-centro'>
-                        <form className='form-editar'>
-                            <input
-                                type='text'
-                                placeholder='Nome do EPI'
-                                onChange={(nome) => setEpi({ ...epi, nome: nome.target.value })}
-                                value={epi?.nome}
-                            />
-                            <input
-                                type='text'
-                                placeholder='Url da Imagem'
-                                onChange={(imagem) => setEpi({ ...epi, imagem: imagem.target.value })}
-                                value={epi?.imagem}
-                            />
-                            <input
-                                type='number'
-                                onChange={(quantidade) => setEpi({ ...epi, quantidade: Number(quantidade.target.value) })}
-                                value={epi?.quantidade}
-                            />
-                        </form>
-                        <button className='btnEditar' onClick={editarEpi}>EDITAR</button>
-                    </div>
+                            <div className='container-form-centro'>
+                                <form className='form-editar'>
+                                    <input
+                                        type='text'
+                                        placeholder='Nome do EPI'
+                                        onChange={(nome) => setEpi({ ...epi, nome: nome.target.value })}
+                                        value={epi?.nome}
+                                    />
+                                    <input
+                                        type='text'
+                                        placeholder='Url da Imagem'
+                                        onChange={(imagem) => setEpi({ ...epi, imagem: imagem.target.value })}
+                                        value={epi?.imagem}
+                                    />
+                                    <input
+                                        type='number'
+                                        onChange={(quantidade) => setEpi({ ...epi, quantidade: Number(quantidade.target.value) })}
+                                        value={epi?.quantidade}
+                                    />
+                                </form>
+                                <button className='btnEditar' onClick={editarEpi}>EDITAR</button>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
 
