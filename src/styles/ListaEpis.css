@@ -42,6 +42,7 @@
   width: 100px;
   height: 100px;
   margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .epi-item {
@@ -53,9 +54,10 @@
   gap: 5px;
 }
 
-.container-descricao {
+.container-alinhar-info {
   display: flex;
   flex-direction: row;
+  gap: 5px;
 }
 
 .container-info {
@@ -64,49 +66,46 @@
   gap: 5px;
 }
 
-.container-botao {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-
-.container-botao a {
-  text-decoration: none;
-}
-
 .btnRetirar {
-  text-align: center;
   width: 100px;
-  /* padding: 10px; */
-  font-size: 16px;
   color: #fff;
   background-color: dodgerblue;
   border: none;
   border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
   transition: 0.3s;
 }
 
+.btnRetirar:hover {
+  background-color: #0081eb;
+}
+
 .btnDevolver {
-  text-align: center;
   width: 100px;
-  /* padding: 10px; */
-  font-size: 16px;
   color: #fff;
   background-color: #28a745;
   border: none;
   border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.container-editar {
+.btnDevolver:hover {
+  background-color: #218838;
+}
+
+.container-icons {
   display: flex;
   flex-direction: row;
+  font-size: 20px;
   gap: 5px;
 }
 
-.container-editar a {
+.container-icons a {
   color: #666;
   text-decoration: none;
 }

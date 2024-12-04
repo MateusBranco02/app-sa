@@ -9,6 +9,10 @@ export default function AppProvider({ children: components }) {
     const [historico, setHistorico] = useState([]);
     const [sincronizarDados, setSincronizarDados] = useState(false);
 
+    useEffect(() => {
+        carregarDados();
+    }, []);
+
     const carregarDados = async () => {
         try {
             const [resultadoEpis, resultadoFuncionarios, resultadoHistorico] = await Promise.all([
@@ -26,13 +30,18 @@ export default function AppProvider({ children: components }) {
         }
     }
 
-    useEffect(() => {
-        carregarDados();
-    }, []);
+    const carregarFuncionarios = async () => {
+        try {
+            const resultadoFuncionarios = await axios.get('http://localhost:3000/funcionarios');
+            setFuncionarios(resultadoFuncionarios.data.resultado);
+        } catch (error) {
+            console.log('Erro ao carregar os funcionários!');
+        }
+    }
 
     return (
         <>
-            <AppContext.Provider value={{ epis, funcionarios, historico, setEpis, setFuncionarios, setHistorico, carregarDados }}>
+            <AppContext.Provider value={{ epis, funcionarios, historico, setEpis, setFuncionarios, setHistorico, carregarDados, carregarFuncionarios }}>
                 {components}
             </AppContext.Provider>
         </>
