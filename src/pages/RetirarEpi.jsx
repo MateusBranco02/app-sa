@@ -57,14 +57,14 @@ export default function RetirarEpi() {
                         <>
                             <h2>Retirar EPI</h2>
                             <form className='form'>
-                                <InputMask
+                                <InputMask className='input-cpf'
                                     mask='999.999.999-99'
                                     placeholder='Informe seu CPF'
                                     onChange={(cpf) => setEpi({ ...epi, cpf: cpf.target.value })}
                                     value={epi.cpf}
                                     required
                                 />
-                                <input
+                                <input className='input-quantidade'
                                     type='Number'
                                     placeholder='Quantidade'
                                     onChange={(quantidade) => setEpi({ ...epi, quantidade: quantidade.target.value })}

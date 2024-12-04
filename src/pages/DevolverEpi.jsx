@@ -56,7 +56,7 @@ export default function DevolverEpi() {
                         <>
                             <h2> Devolver EPI</h2>
                             <form className='form'>
-                                <InputMask
+                                <InputMask className='input-cpf'
                                     mask='999.999.999-99'
                                     placeholder='Informe seu CPF'
                                     onChange={(cpf) => setEpi({ ...epi, cpf: cpf.target.value })}
@@ -64,7 +64,7 @@ export default function DevolverEpi() {
                                     required
                                 />
                                 <input
-                                    type='Number'
+                                    type='Number' className='input-quantidade'
                                     placeholder='Quantidade'
                                     onChange={(quantidade) => setEpi({ ...epi, quantidade: quantidade.target.value })}
                                     value={epi.quantidade}
