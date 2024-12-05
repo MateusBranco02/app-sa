@@ -24,7 +24,7 @@
   padding: 20px;
   overflow-y: auto;
   padding: 20px;
-  
+
 }
 
 .container-historico p {
@@ -53,4 +53,15 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.mensagem-vazia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #888;
+  font-size: 20px;
+  width: 100%;
+  height: 100vh;
 }

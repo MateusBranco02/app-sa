@@ -51,8 +51,8 @@ export default function ListaEpis() {
                     </div>
                   </div>
                   <div className='container-icons'>
-                    <Link className='btnEditar'to={`/editar-epi/${epi.id}`}><BiSolidEdit /></Link>
-                    <Link className='btnExcluir' to='#' onClick={() => { setInputRemocaoVisivel(epi.id); setEpiSelecionado(epi.nome); }}><MdDelete /></Link>
+                    <Link className='icone-editar'to={`/editar-epi/${epi.id}`}><BiSolidEdit /></Link>
+                    <Link className='icone-remover' to='#' onClick={() => { setInputRemocaoVisivel(epi.id); setEpiSelecionado(epi.nome); }}><MdDelete /></Link>
                   </div>
                 </li>
               )}

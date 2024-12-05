@@ -14,7 +14,7 @@ export default function EditarEpi() {
     const [epi, setEpi] = useState({
         nome: '',
         imagem: '',
-        quantidade: 0
+        quantidade: ''
     });
     const [loading, setLoading] = useState(true);
     const [carregando, setCarregando] = useState(false);
@@ -77,19 +77,23 @@ export default function EditarEpi() {
                             <div className='container-form-centro'>
                                 <form className='form-editar'>
                                     <input
+                                        className='input-nome'
                                         type='text'
                                         placeholder='Nome do EPI'
                                         onChange={(nome) => setEpi({ ...epi, nome: nome.target.value })}
                                         value={epi?.nome}
                                     />
                                     <input
+                                        className='input-imagem'
                                         type='text'
                                         placeholder='Url da Imagem'
                                         onChange={(imagem) => setEpi({ ...epi, imagem: imagem.target.value })}
                                         value={epi?.imagem}
                                     />
                                     <input
+                                        className='input-quantidade'
                                         type='number'
+                                        placeholder='Quantidade'
                                         onChange={(quantidade) => setEpi({ ...epi, quantidade: Number(quantidade.target.value) })}
                                         value={epi?.quantidade}
                                     />

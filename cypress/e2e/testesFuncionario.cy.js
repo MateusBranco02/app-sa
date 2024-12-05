@@ -1,7 +1,6 @@
 describe('Tela de Funcionário', () => {
-  it('Realizar os testes das funcionalidades de funcionário com sucesso!', () => {
+  it('Deve navegar até Cadastro de Funcionário e cadastrar um novo funcionário', () => {
     cy.visit('http://localhost:5173/');
-
     cy.wait(1000);
     cy.get('.botao').contains('FUNCIONÁRIO').click();
     cy.wait(1000);
@@ -18,14 +17,17 @@ describe('Tela de Funcionário', () => {
     cy.get('.input-cpf').type('87360145289');
     cy.wait(1000);
     cy.get('.btnCadastrar').click();
-    cy.wait(2000);
+    cy.wait(1000);
+  });
 
+  it('Deve editar um funcionário', () => {
+    cy.visit('http://localhost:5173/');
+    cy.wait(1000);
     cy.get('.botao').contains('FUNCIONÁRIO').click();
     cy.wait(1000);
     cy.get('.botao').contains('FUNCIONÁRIOS').click();
     cy.wait(1000);
-    cy.get('.p-nome').contains('Cadastro de usuário');
-    cy.wait(1000);
+    cy.get('.p-nome').contains('Cadastro de usuário').scrollIntoView();
     cy.get('.lista-funcionarios li').contains('Nome: Cadastro de usuário').closest('li').find('.icone-editar').click();
     cy.wait(1000);
     cy.get('.input-cpf').type('87360145289');
@@ -39,13 +41,16 @@ describe('Tela de Funcionário', () => {
     cy.get('.btnEditar').contains('EDITAR').click();
     cy.wait(1000);
     cy.get('a').contains('LISTA DE FUNCIONÁRIOS').click();
+  });
 
-    cy.wait(2000);
+  it('Deve remover um funcionário', () => {
+    cy.visit('http://localhost:5173/');
+    cy.wait(1000);
     cy.get('.botao').contains('FUNCIONÁRIO').click();
     cy.wait(1000);
     cy.get('.botao').contains('FUNCIONÁRIOS').click();
     cy.wait(1000);
-    cy.get('.p-nome').contains('Cadastro de Usuário');
+    cy.get('.p-nome').contains('Cadastro de Usuário').scrollIntoView();
     cy.wait(1000);
     cy.get('.lista-funcionarios li').contains('Nome: Cadastro de Usuário').closest('li').find('.icone-remover').click();
     cy.wait(1000);
