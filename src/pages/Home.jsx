@@ -7,7 +7,7 @@ import Header from '../components/Header.jsx';
 export default function Home() {
   return (
     <>
-      <Header titulo={'Bonde da S.A.'} />
+      <Header titulo={`GERENCIAMENTO DE EPI'S`} />
 
       <div className='container'>
         <div className='container-view'>

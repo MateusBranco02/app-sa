@@ -21,7 +21,7 @@ export default function Historico() {
 
   return (
     <>
-      <Header titulo={'Histórico'} />
+      <Header titulo={'HISTÓRICO'} />
 
       <div className='container'>
         <div className='container-view-historico'>

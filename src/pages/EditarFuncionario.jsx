@@ -71,7 +71,7 @@ export default function EditarEPi() {
 
     return (
         <>
-            <Header titulo={'Editar funcionário'} />
+            <Header titulo={'EDITAR FUNCIONÁRIO'} />
 
             <div className='container'>
                 <div className='container-editar-funcionario'>
