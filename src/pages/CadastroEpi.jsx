@@ -38,7 +38,7 @@ export default function CadastroEpi() {
 
     return (
         <>
-            <Header titulo={'CADASTRAR EPI'} />
+            <Header titulo={'GERENCIAR CADASTRO'} />
 
             <div className='container'>
                 <div className='container-form'>

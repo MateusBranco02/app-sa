@@ -20,6 +20,27 @@ describe('Tela de Funcionário', () => {
     cy.wait(1000);
   });
 
+  it('Deve navegar até Cadastro de Funcionário e tentar cadastrar funcionário com o mesmo cpf!', () => {
+    cy.visit('http://localhost:5173/');
+    cy.wait(1000);
+    cy.get('.botao').contains('FUNCIONÁRIO').click();
+    cy.wait(1000);
+    cy.get('.botao').contains('CADASTRAR').click();
+    cy.wait(1000);
+    cy.get('.input-nome').type('João Pedro');
+    cy.wait(1000);
+    cy.get('.input-funcao').type('Tester');
+    cy.wait(1000);
+    cy.get('.input-telefone').type('48988542369');
+    cy.wait(1000);
+    cy.get('.input-email').type('joao@gmail.com');
+    cy.wait(1000);
+    cy.get('.input-cpf').type('87360145289');
+    cy.wait(1000);
+    cy.get('.btnCadastrar').click();
+    cy.wait(1000);
+  });
+
   it('Deve editar um funcionário', () => {
     cy.visit('http://localhost:5173/');
     cy.wait(1000);

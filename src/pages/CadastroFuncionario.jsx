@@ -54,7 +54,7 @@ export default function CadastroFuncionario() {
 
     return (
         <>
-            <Header titulo={'CADASTRAR FUNCIONÁRIO'} />
+            <Header titulo={'GERENCIAR CADASTRO'} />
 
             <div className='container'>
                 <div className='container-form-funcionario'>

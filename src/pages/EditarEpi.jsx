@@ -62,7 +62,7 @@ export default function EditarEpi() {
 
     return (
         <>
-            <Header titulo={'Editar EPI'} />
+            <Header titulo={'EDITAR EPI'} />
 
             <div className='container'>
                 <div className='container-form-editar'>
