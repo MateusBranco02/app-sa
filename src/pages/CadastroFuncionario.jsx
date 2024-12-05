@@ -43,10 +43,12 @@ export default function CadastroFuncionario() {
             await carregarFuncionarios();
             toast.success('Funcionário cadastrado com sucesso!');
             navigate('/');
-            setCarregando(false);
         } catch (error) {
-            toast.error('Erro ao tentar cadastrar o funcionário!');
-            console.log('Erro ao tentar cadastrar o funcionário!', error);
+            const mensagemDeErro = error.response?.data?.mensagem || 'Erro ao tentar cadastrar o funcionário!';
+            toast.error(mensagemDeErro);
+            console.log(mensagemDeErro);
+        } finally {
+            setCarregando(false);
         }
     }
 
