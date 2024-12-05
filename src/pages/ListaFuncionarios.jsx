@@ -69,7 +69,7 @@ export default function ListaFuncionarios() {
 
   return (
     <>
-      <Header titulo={'Lista de Funcionários'} />
+      <Header titulo={'LISTA DE FUNCIONÁRIOS'} />
 
       <div className='container'>
         <div className='container-view-funcionarios'>
@@ -78,14 +78,14 @@ export default function ListaFuncionarios() {
               {formatarFuncionarioComMascara.map((funcionario, key) =>
                 <li className='funcionario' key={key}>
                   <div className='container-info-funcionario'>
-                    <p>Nome: {funcionario.nome}</p>
+                    <p className='p-nome'>Nome: {funcionario.nome}</p>
                     <p>Função: {funcionario.funcao}</p>
                     <p>Telefone: {funcionario.telefone}</p>
                     <p>E-mail: {funcionario.email}</p>
                     <p>CPF: {funcionario.cpf}</p>
                   </div>
                   <div className='container-icons'>
-                    <Link to='#' onClick={(e) => { e.preventDefault(); setInputEdicaoVisivel(funcionario.id) }}><BiSolidEdit /></Link>
+                    <Link className='icone-editar' to='#' onClick={(e) => { e.preventDefault(); setInputEdicaoVisivel(funcionario.id) }}><BiSolidEdit /></Link>
                     {inputEdicaoVisivel === funcionario.id && (
                       <div className='validar-cpf'>
                         {carregando ? (
@@ -101,13 +101,13 @@ export default function ListaFuncionarios() {
                               value={cpfDigitado}
                               required
                             />
-                            <button onClick={() => validarCpfParaEdicao(funcionario.id)}>Confirmar</button>
-                            <button onClick={() => { setInputEdicaoVisivel(null); setCpfDigitado(''); }}>Cancelar</button>
+                            <button className='btnConfirmar' onClick={() => validarCpfParaEdicao(funcionario.id)}>Confirmar</button>
+                            <button className='btnCancelar' onClick={() => { setInputEdicaoVisivel(null); setCpfDigitado(''); }}>Cancelar</button>
                           </>
                         )}
                       </div>
                     )}
-                    <Link to='#' onClick={() => { setInputRemocaoVisivel(funcionario.id); setFuncionarioSelecionado(funcionario.nome); }}><MdDelete /></Link>
+                    <Link className='icone-remover' to='#' onClick={() => { setInputRemocaoVisivel(funcionario.id); setFuncionarioSelecionado(funcionario.nome); }}><MdDelete /></Link>
                   </div>
                 </li>
               )}

@@ -33,7 +33,7 @@ export default function ListaEpis() {
 
   return (
     <>
-      <Header titulo={`EPI'S`} />
+      <Header titulo={`LISTA DE EPI'S`} />
 
       <div className='container'>
         <div className='container-view-epis'>
