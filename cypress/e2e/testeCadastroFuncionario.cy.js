@@ -1,0 +1,31 @@
+describe('Tela Cadastro de Funcionário', () => {
+  it('Navegar até Cadastro de Funcionário', () => {
+    cy.visit('http://localhost:5173/');
+    cy.visit('http://localhost:5173/');
+    cy.wait(1000);
+    cy.get('.botao').contains('FUNCIONÁRIO').click();
+    cy.wait(1000);
+    cy.get('.botao').contains('CADASTRAR').click();
+    cy.wait(1000);
+    cy.get('.input-nome').type('Cadastro de usuário');
+    cy.wait(1000);
+    cy.get('.input-funcao').type('Aluno');
+    cy.wait(1000);
+    cy.get('.input-telefone').type('56998543601');
+    cy.wait(1000);
+    cy.get('.input-email').type('cadastrar@email.com');
+    cy.wait(1000);
+    cy.get('.input-cpf').type('87360145289');
+    cy.wait(1000);
+    cy.get('.btnCadastrar').click();
+    cy.wait(2000);
+    cy.wait(1000);
+    cy.get('.botao').contains('FUNCIONÁRIO').click();
+    cy.wait(1000);
+    cy.get('.botao').contains('FUNCIONÁRIOS').click();
+    cy.wait(1000);
+    cy.get('.p-nome').contains('Paulo');
+    cy.wait(1000);
+    cy.get('.icone-editar').click();
+  });
+});

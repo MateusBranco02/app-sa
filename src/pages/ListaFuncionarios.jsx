@@ -78,14 +78,14 @@ export default function ListaFuncionarios() {
               {formatarFuncionarioComMascara.map((funcionario, key) =>
                 <li className='funcionario' key={key}>
                   <div className='container-info-funcionario'>
-                    <p>Nome: {funcionario.nome}</p>
+                    <p className='p-nome'>Nome: {funcionario.nome}</p>
                     <p>Função: {funcionario.funcao}</p>
                     <p>Telefone: {funcionario.telefone}</p>
                     <p>E-mail: {funcionario.email}</p>
                     <p>CPF: {funcionario.cpf}</p>
                   </div>
                   <div className='container-icons'>
-                    <Link to='#' onClick={(e) => { e.preventDefault(); setInputEdicaoVisivel(funcionario.id) }}><BiSolidEdit /></Link>
+                    <Link className='icone-editar' to='#' onClick={(e) => { e.preventDefault(); setInputEdicaoVisivel(funcionario.id) }}><BiSolidEdit /></Link>
                     {inputEdicaoVisivel === funcionario.id && (
                       <div className='validar-cpf'>
                         {carregando ? (
